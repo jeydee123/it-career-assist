@@ -1,5 +1,5 @@
 \import './App.css';
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 import WelcomePage from "./components/pages/WelcomePage"
 import QuestionPage from "./components/pages/QuestionPage"
 import SoftwareDevPage from "./components/pages/SoftwareDevPage"
@@ -19,7 +19,7 @@ function App() {
     // wrapping the context API around all the roots as a parent of all the other routes, so that all other routes can access the user's "name"
     <AppContextProvider>
     <div>
-      <Router>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             {/* listing all the routes within the site, which will be later navigated to */}
             <Route path="/" element = {<WelcomePage />} />
@@ -28,10 +28,10 @@ function App() {
             <Route path="/networking" element= {<NetworkingPage />} />
             <Route path="/softwareDevelopment" element={<SoftwareDevPage />} />
             <Route path="/cloudComputing" element={<CloudComputePage />} />
-            <Route path="/beginnerGuide" element={<BeginnersGuidePage />} />
-            
+            <Route path="/beginnerGuide" element={<BeginnersGuidePage />} />   
+              
           </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
     </AppContextProvider>
   );
